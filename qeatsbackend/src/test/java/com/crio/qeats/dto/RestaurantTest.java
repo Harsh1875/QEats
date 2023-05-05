@@ -38,10 +38,12 @@ class RestaurantTest {
     // object can deserialize the right restaurant json.
     Restaurant restaurant = new Restaurant();
     restaurant = new ObjectMapper().readValue(jsonString, Restaurant.class);
-
+    
     // Deserialize the Json string from Restaurant class to ensure its done cleanly.
     String actualJsonString = "";
-    actualJsonString = new ObjectMapper().writeValueAsString(restaurant);
+    //actualJsonString = new ObjectMapper().writeValueAsString(restaurant);
+    actualJsonString = new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(restaurant);    
+
     JSONAssert.assertEquals(jsonString, actualJsonString, true);
   }
 }
