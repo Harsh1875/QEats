@@ -75,8 +75,8 @@ class RestaurantServiceTest {
             timeOfService); //LocalTime.of(19,00));
 
     assertEquals(2, allRestaurantsCloseBy.getRestaurants().size());
-    assertEquals("11", allRestaurantsCloseBy.getRestaurants().get(0).getRestaurantId());
-    assertEquals("12", allRestaurantsCloseBy.getRestaurants().get(1).getRestaurantId());
+    assertEquals("10", allRestaurantsCloseBy.getRestaurants().get(0).getRestaurantId());
+    assertEquals("11", allRestaurantsCloseBy.getRestaurants().get(1).getRestaurantId());
 
     ArgumentCaptor<Double> servingRadiusInKms = ArgumentCaptor.forClass(Double.class);
     verify(restaurantRepositoryServiceMock, times(1))
@@ -91,6 +91,10 @@ class RestaurantServiceTest {
     assertEquals(getServingRadius(loadRestaurantsDuringPeakHours(), LocalTime.of(19, 0)), "3.0");
   }
 
+  @Test
+  void peakHourServingRadiusOf3KmsAt2Pm() throws IOException {
+    assertEquals(getServingRadius(loadRestaurantsDuringPeakHours(), LocalTime.of(14, 0)), "3.0");
+  }
 
   @Test
   void normalHourServingRadiusIs5Kms() throws IOException {

@@ -41,9 +41,9 @@ public class RestaurantServiceImpl implements RestaurantService {
   public GetRestaurantsResponse findAllRestaurantsCloseBy(
       GetRestaurantsRequest getRestaurantsRequest, LocalTime currentTime) {
         
-        if ( (currentTime.isAfter(LocalTime.parse("07:59:59")) && currentTime.isBefore(LocalTime.parse("10:00:00")))
-            || (currentTime.isAfter(LocalTime.parse("12:59:59")) && currentTime.isBefore(LocalTime.parse("14:00:00"))) 
-            || currentTime.isAfter(LocalTime.parse("18:59:59")) && currentTime.isBefore(LocalTime.parse("21:00:00"))
+        if ( (currentTime.isAfter(LocalTime.parse("07:59:59")) && currentTime.isBefore(LocalTime.parse("10:00:01")))
+            || (currentTime.isAfter(LocalTime.parse("12:59:59")) && currentTime.isBefore(LocalTime.parse("14:00:01"))) 
+            || currentTime.isAfter(LocalTime.parse("18:59:59")) && currentTime.isBefore(LocalTime.parse("21:00:01"))
             ) {
 
                 List<Restaurant> restaurant = restaurantRepositoryService.findAllRestaurantsCloseBy(getRestaurantsRequest.getLatitude(), getRestaurantsRequest.getLongitude(), currentTime, peakHoursServingRadiusInKms);
