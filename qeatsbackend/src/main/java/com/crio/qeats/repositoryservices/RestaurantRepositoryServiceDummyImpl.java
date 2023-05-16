@@ -28,6 +28,14 @@ public class RestaurantRepositoryServiceDummyImpl implements RestaurantRepositor
     });
   }
 
+  private List<Restaurant> loadRestaurantsDuringPeakHours() throws IOException {
+    String fixture = 
+        FixtureHelpers.fixture(FIXTURES + "/peak_hours_list_of_restaurants.json");
+
+    return objectMapper.readValue(fixture, new TypeReference<List<Restaurant>>() {
+    });
+  }
+
   // TODO: CRIO_TASK_MODULE_RESTAURANTSAPI - Use this dummy implementation.
   // This function returns a list of restaurants in any lat/long of your choice randomly.
   // It will load some dummy restaurants and change their latitude/longitude near
@@ -38,7 +46,12 @@ public class RestaurantRepositoryServiceDummyImpl implements RestaurantRepositor
       LocalTime currentTime, Double servingRadiusInKms) {
     List<Restaurant> restaurantList = new ArrayList<>();
     try {
-      restaurantList = loadRestaurantsDuringNormalHours();
+      if (servingRadiusInKms == 3.0) {
+          restaurantList = loadRestaurantsDuringPeakHours();
+      }
+      else {
+        restaurantList = loadRestaurantsDuringNormalHours();
+      }
     } catch (IOException e) {
       e.printStackTrace();
     }
