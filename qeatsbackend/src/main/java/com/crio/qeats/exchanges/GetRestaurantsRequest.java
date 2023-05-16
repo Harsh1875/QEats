@@ -36,7 +36,7 @@ public class GetRestaurantsRequest {
     @Max(value = 180)
     private Double longitude;
 
-    private String searchFor;
+    //private String searchFor;
 
 }
 
