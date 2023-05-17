@@ -27,9 +27,12 @@ import java.time.LocalTime;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,15 +40,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
-// TODO: CRIO_TASK_MODULE_RESTAURANTSAPI
-//  Pass all the RestaurantService test cases.
-// Contains necessary test cases that check for implementation correctness.
-// Objectives:
-// 1. Make modifications to the tests if necessary so that all test cases pass
-// 2. Test RestaurantService Api by mocking RestaurantRepositoryService.
 
-@SpringBootTest(classes = {QEatsApplication.class})
-@MockitoSettings(strictness = Strictness.STRICT_STUBS)
+@ExtendWith(MockitoExtension.class)
 @DirtiesContext
 @ActiveProfiles("test")
 class RestaurantServiceTest {
@@ -53,7 +49,7 @@ class RestaurantServiceTest {
   private static final String FIXTURES = "fixtures/exchanges";
   @InjectMocks
   private RestaurantServiceImpl restaurantService;
-  @MockBean
+  @Mock
   private RestaurantRepositoryService restaurantRepositoryServiceMock;
   private ObjectMapper objectMapper;
 
