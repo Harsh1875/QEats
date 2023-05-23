@@ -41,7 +41,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 
 
-@ExtendWith(MockitoExtension.class)
+@SpringBootTest(classes = {QEatsApplication.class})
+@MockitoSettings(strictness = Strictness.STRICT_STUBS)
 @DirtiesContext
 @ActiveProfiles("test")
 class RestaurantServiceTest {

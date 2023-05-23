@@ -23,6 +23,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -46,14 +47,15 @@ public class RestaurantServiceImpl implements RestaurantService {
             || currentTime.isAfter(LocalTime.parse("18:59:59")) && currentTime.isBefore(LocalTime.parse("21:00:01"))
             ) {
 
+                //List<Restaurant> restaurant = restaurantRepositoryService.findAllRestaurantsCloseBy(getRestaurantsRequest.getLatitude(), getRestaurantsRequest.getLongitude(), currentTime, peakHoursServingRadiusInKms);
                 List<Restaurant> restaurant = restaurantRepositoryService.findAllRestaurantsCloseBy(getRestaurantsRequest.getLatitude(), getRestaurantsRequest.getLongitude(), currentTime, peakHoursServingRadiusInKms);
+                log.info("calling the db from the service layer");
                 return new GetRestaurantsResponse(restaurant);
-
             }
 
         List<Restaurant> restaurant = restaurantRepositoryService.findAllRestaurantsCloseBy(getRestaurantsRequest.getLatitude(), getRestaurantsRequest.getLongitude(), currentTime, normalHoursServingRadiusInKms);
+        log.info("calling the db from the service layer");
         return new GetRestaurantsResponse(restaurant);
-        
   }
 
 

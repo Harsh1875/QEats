@@ -2,8 +2,8 @@
 // CRIO_SOLUTION_AND_STUB_END_MODULE_SERIALIZATION
 #!/bin/bash
 
-lat=19.234086609029745
-lng=72.85806111971708
+lat=19.233770
+lng=72.857887
 
 source coordinates.txt
 

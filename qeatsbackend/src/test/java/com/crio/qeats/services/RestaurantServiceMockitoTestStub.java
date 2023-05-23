@@ -138,8 +138,5 @@ public class RestaurantServiceMockitoTestStub {
     assertEquals("14", allRestaurantsCloseByPeakHours.getRestaurants().get(1).getRestaurantId());
   }
 
- 
-
-
 }
 
