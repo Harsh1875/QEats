@@ -32,7 +32,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 public class RestaurantServiceMockitoTestStub {
 
   protected static final String FIXTURES = "fixtures/exchanges";
-  protected static final double AVERAGE_RADIUS_OF_EARTH_KM = 6371;
 
   protected ObjectMapper objectMapper = new ObjectMapper();
 

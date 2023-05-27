@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 // TODO: CRIO_TASK_MODULE_SERIALIZATION
 //  Implement Restaurant class.
@@ -35,6 +34,7 @@ import lombok.NoArgsConstructor;
 //    "Tamil",
 //    "South Indian"
 //  ]
+
 // }
 
 @Data

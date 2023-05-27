@@ -54,6 +54,12 @@ public class RestaurantServiceImpl implements RestaurantService {
             }
 
         List<Restaurant> restaurant = restaurantRepositoryService.findAllRestaurantsCloseBy(getRestaurantsRequest.getLatitude(), getRestaurantsRequest.getLongitude(), currentTime, normalHoursServingRadiusInKms);
+        
+        for (Restaurant entity : restaurant) {
+            String asciiName = entity.getName().replaceAll("[^\\x00-\\x7F]", "");
+            entity.setName(asciiName);
+        }
+
         log.info("calling the db from the service layer");
         return new GetRestaurantsResponse(restaurant);
   }
